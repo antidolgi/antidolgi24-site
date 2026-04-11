@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<yml_catalog date="2026-04-11">
+  <shop>
+    <!-- Основная информация -->
+    <name>АнтиДолги24 - Банкротство физических лиц</name>
+    <company>Агентство правовой поддержки и антикризисного управления</company>
+    <url>https://antidolgi24.ru</url>
+    <platform>GitHub Pages</platform>
+    <version>1.0</version>
+    
+    <!-- Валюта -->
+    <currencies>
+      <currency id="RUR" rate="1"/>
+    </currencies>
+    
+    <!-- Категории услуг -->
+    <categories>
+      <category id="1">Консультация по банкротству</category>
+      <category id="2">Сопровождение процедуры банкротства</category>
+      <category id="3">Анализ финансовой ситуации</category>
+      <category id="4">Защита от коллекторов</category>
+    </categories>
+    
+    <!-- Услуги (офферы) -->
+    <offers>
+      <offer id="consult" type="service">
+        <url>https://antidolgi24.ru/#consultForm</url>
+        <price>0</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <name>Бесплатная первичная консультация</name>
+        <description>Анализ вашей ситуации, оценка перспектив банкротства, план действий. Без обязательств.</description>
+        <param name="duration">30 минут</param>
+        <param name="format">Онлайн / Офис</param>
+      </offer>
+      
+      <offer id="full-support" type="service">
+        <url>https://antidolgi24.ru/#tariffs</url>
+        <price>70000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <name>Полное сопровождение банкротства</name>
+        <description>Подготовка документов, представительство в суде, взаимодействие с финансовым управляющим и кредиторами.</description>
+        <param name="duration">6-12 месяцев</param>
+        <param name="guarantee">Работа в рамках ФЗ-127</param>
+      </offer>
+    </offers>
+    
+    <!-- Контакты для Директа -->
+    <local_delivery_cost>0</local_delivery_cost>
+    <phone>+79957886668</phone>
+    <email>antidolgi24@gmail.com</email>
+  </shop>
+</yml_catalog>
