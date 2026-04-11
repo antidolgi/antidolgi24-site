@@ -475,5 +475,50 @@ if ('serviceWorker' in navigator) {
         </button>
     </div>
 </div>
+    <script>
+// Логика показа/скрытия баннера
+document.addEventListener('DOMContentLoaded', function() {
+    const banner = document.getElementById('cookieBanner');
+    const acceptBtn = document.getElementById('cookieAccept');
+    
+    // Проверяем, принимал ли пользователь уже
+    if (!localStorage.getItem('cookieConsent')) {
+        // Показываем с небольшой задержкой
+        setTimeout(() => {
+            banner.classList.add('show');
+        }, 2000);
+    }
+    
+    // Обработка клика "Принять"
+    if (acceptBtn) {
+        acceptBtn.addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'true');
+            localStorage.setItem('cookieConsentDate', new Date().toISOString());
+            banner.classList.remove('show');
+            
+            // Инициализируем аналитику только после согласия (важно для 152-ФЗ!)
+            if (typeof initAnalytics === 'function') {
+                initAnalytics();
+            }
+        });
+    }
+});
+
+// Функция инициализации Яндекс.Метрики (вызывается только после согласия)
+function initAnalytics() {
+    // Раскомментируй и вставь свой номер Метрики
+    /*
+    if (typeof Ya !== 'undefined' && Ya.Metrika) {
+        // Метрика уже загружена
+    } else {
+        // Динамическая загрузка Метрики
+        const script = document.createElement('script');
+        script.src = 'https://mc.yandex.ru/metrika/tag.js';
+        script.async = true;
+        document.head.appendChild(script);
+    }
+    */
+}
+</script>
 </body>
 </html>
