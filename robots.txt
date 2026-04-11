@@ -1,0 +1,22 @@
+# robots.txt для АнтиДолги24
+# Инструкция для поисковых роботов Яндекса и Google
+
+# Разрешаем индексацию всем
+User-agent: *
+Allow: /
+
+# Запрещаем индексацию служебных путей
+Disallow: /js/
+Disallow: /css/
+Disallow: /images/tmp/
+Disallow: /*?utm_
+Disallow: /privacy-policy.html$  # Политика не индексируется отдельно
+
+# Указываем главную страницу для зеркала
+Host: https://antidolgi24.ru
+
+# Путь к карте сайта (обязательно для Яндекса!)
+Sitemap: https://antidolgi24.ru/sitemap.xml
+
+# Задержка для роботов (чтобы не перегружать сервер)
+Crawl-delay: 1
