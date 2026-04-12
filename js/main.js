@@ -418,6 +418,64 @@ function showErrorMessage(form, text) {
         errorMsg.remove();
     }, 5000);
 }
+// ========================================
+// COOKIE BANNER (152-ФЗ)
+// ========================================
+function initCookieBanner() {
+    const banner = document.getElementById('cookieBanner');
+    const acceptBtn = document.getElementById('cookieAccept');
+    
+    if (!banner || !acceptBtn) return;
+    
+    // Проверяем, принимал ли пользователь уже
+    if (localStorage.getItem('cookieConsent')) {
+        banner.style.display = 'none';
+        return;
+    }
+    
+    // Показываем баннер с задержкой
+    setTimeout(() => {
+        banner.classList.add('show');
+    }, 2000);
+    
+    // Обработка клика "Принять"
+    acceptBtn.addEventListener('click', function() {
+        // Сохраняем согласие
+        localStorage.setItem('cookieConsent', 'true');
+        localStorage.setItem('cookieConsentDate', new Date().toISOString());
+        
+        // Скрываем баннер
+        banner.classList.remove('show');
+        setTimeout(() => {
+            banner.style.display = 'none';
+        }, 300);
+        
+        // Инициализируем аналитику только после согласия
+        if (typeof initAnalytics === 'function') {
+            initAnalytics();
+        }
+    });
+}
+
+// Функция инициализации Яндекс.Метрики (вызывается только после согласия)
+function initAnalytics() {
+    // Вставь сюда код Яндекс.Метрики, если есть
+    // Пример:
+    /*
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        // ... код Метрики
+    })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    ym(YOUR_COUNTER_ID, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true });
+    */
+    console.log('✅ Аналитика инициализирована');
+}
+
+// Вызываем при загрузке
+document.addEventListener('DOMContentLoaded', function() {
+    // ... другие функции ...
+    initCookieBanner();
+});
 
 // ========================================
 // 8. ЭФФЕКТ ХЕДЕРА ПРИ ПРОКРУТКЕ
