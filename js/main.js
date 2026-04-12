@@ -455,6 +455,72 @@ function validatePhone(phone) {
     // Проверяем длину (российские номера: +7 и 10 цифр)
     return /^(\+7|8)?\d{10}$/.test(cleaned);
 }
+// ========================================
+// ОБРАТНЫЙ ОТСЧЁТ (COUNTDOWN TIMER)
+// ========================================
+function initCountdown() {
+    const countdownElement = document.getElementById('countdownTimer');
+    if (!countdownElement) return;
+    
+    // Устанавливаем дату окончания акции (14 дней от сегодня)
+    // Можно изменить на конкретную дату: new Date('2026-04-29T23:59:59')
+    const endDate = getEndDate();
+    
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = endDate - now;
+        
+        // Если время вышло
+        if (distance < 0) {
+            // Показываем сообщение об окончании
+            countdownElement.innerHTML = `
+                <div style="color: #e53e3e; font-weight: 600; font-size: 1.2rem;">
+                    ⏰ Акция завершена
+                </div>
+            `;
+            document.querySelector('.countdown-banner').classList.add('urgent');
+            return;
+        }
+        
+        // Вычисляем дни, часы, минуты, секунды
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        // Обновляем DOM
+        document.getElementById('days').textContent = String(days).padStart(2, '0');
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        
+        // Если остаётся меньше 3 дней — делаем красным (срочно!)
+        if (days < 3) {
+            document.querySelector('.countdown-banner').classList.add('urgent');
+        }
+    }
+    
+    // Обновляем каждую секунду
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+}
+
+// Функция для расчёта даты окончания (14 дней от сегодня)
+function getEndDate() {
+    const endDate = new Date();
+    endDate.setDate(endDate.getDate() + 14); // 14 дней
+    endDate.setHours(23, 59, 59, 999); // До конца дня
+    return endDate.getTime();
+    
+    // АЛЬТЕРНАТИВА: конкретная дата
+    // return new Date('2024-02-01T23:59:59').getTime();
+}
+
+// Вызываем при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+    // ... другие функции ...
+    initCountdown();
+});
 
 /**
  * Форматирование телефона в реальном времени
