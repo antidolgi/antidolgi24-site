@@ -602,6 +602,121 @@ h3 { font-size: 1.25rem; }
     color: var(--color-text-light);
     margin-top: 1rem;
 }
+/* ========================================
+   ОБРАТНЫЙ ОТСЧЁТ (COUNTDOWN)
+   ======================================== */
+.countdown-banner {
+    background: linear-gradient(135deg, #fff5f5 0%, #fff9e6 100%);
+    border: 2px solid var(--color-secondary);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.countdown-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #f56565, #ed8936, #ecc94b);
+    animation: gradientMove 3s linear infinite;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+.countdown-banner__text {
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    background: var(--color-white);
+    padding: 15px;
+    border-radius: var(--radius);
+    min-width: 80px;
+    box-shadow: var(--shadow-md);
+    border: 2px solid var(--color-secondary);
+}
+
+.countdown-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.countdown-label {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    text-transform: lowercase;
+}
+
+.countdown-banner__note {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 767px) {
+    .countdown-item {
+        min-width: 60px;
+        padding: 10px;
+    }
+    
+    .countdown-number {
+        font-size: 1.5rem;
+    }
+    
+    .countdown-label {
+        font-size: 0.75rem;
+    }
+    
+    .countdown-banner__text {
+        font-size: 1rem;
+    }
+}
+
+/* Анимация пульсации для привлечения внимания */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+.countdown-banner {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Когда остаётся мало времени — красная рамка */
+.countdown-banner.urgent {
+    border-color: #f56565;
+    background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);
+}
+
+.countdown-banner.urgent .countdown-number {
+    color: #e53e3e;
+}
 
 /* ========================================
    CONTACTS (КОНТАКТЫ)
