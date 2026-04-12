@@ -277,47 +277,75 @@
         </div>
     </section>
 
-    <!-- ========== ФОРМА ОБРАТНОЙ СВЯЗИ ========== -->
     <section class="contact-form section">
-        <div class="container">
-            <div class="form-wrapper" data-animate="zoomIn">
-                <h2 class="form-wrapper__title">Узнайте, как решить проблему</h2>
-                <p class="form-wrapper__subtitle">Заполните форму и получите бесплатную консультацию</p>
-                
-                <!-- Форма -->
-                <form class="form" id="consultForm" action="#" method="POST">
-                    <div class="form__group">
-                        <input type="text" class="form__input" name="name" placeholder="Ваше имя" required>
+    <div class="container">
+        <div class="form-wrapper" data-animate="zoomIn">
+            <h2 class="form-wrapper__title">Узнайте, как решить проблему</h2>
+            <p class="form-wrapper__subtitle">Заполните форму и получите бесплатную консультацию</p>
+            
+            <!-- ========== ОБРАТНЫЙ ОТСЧЁТ ========== -->
+            <div class="countdown-banner">
+                <div class="countdown-banner__text">
+                    🔥 Успейте записаться на бесплатную консультацию до конца акции:
+                </div>
+                <div class="countdown-timer" id="countdownTimer">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="days">00</div>
+                        <div class="countdown-label">дней</div>
                     </div>
-                    
-                    <div class="form__group">
-                        <input type="tel" class="form__input" name="phone" placeholder="Номер телефона" required>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="hours">00</div>
+                        <div class="countdown-label">часов</div>
                     </div>
-                    
-                    <div class="form__group">
-                        <input type="text" class="form__input" name="debt" placeholder="Общая сумма долга">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="minutes">00</div>
+                        <div class="countdown-label">минут</div>
                     </div>
-                    
-                    <div class="form__group">
-                        <input type="text" class="form__input" name="city" placeholder="Город">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="seconds">00</div>
+                        <div class="countdown-label">секунд</div>
                     </div>
-                    
-                    <div class="form__group">
-                        <textarea class="form__textarea" name="message" placeholder="Дополнительная информация" rows="4"></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn--primary btn--full">
-                        Получить бесплатную консультацию
-                    </button>
-                    
-                    <p class="form__privacy">
-                        Нажимая кнопку, вы соглашаетесь с 
-                        <a href="#" class="link">политикой конфиденциальности</a>
-                    </p>
-                </form>
+                </div>
+                <div class="countdown-banner__note">
+                    ⚖️ После окончания акции консультация будет платной (2000 ₽)
+                </div>
             </div>
+            <!-- ========== КОНЕЦ ОТСЧЁТА ========== -->
+            
+            <!-- Форма -->
+            <form class="form" id="consultForm" action="#" method="POST">
+                <div class="form__group">
+                    <input type="text" class="form__input" name="name" placeholder="Ваше имя" required>
+                </div>
+                
+                <div class="form__group">
+                    <input type="tel" class="form__input" name="phone" placeholder="Номер телефона" required>
+                </div>
+                
+                <div class="form__group">
+                    <input type="text" class="form__input" name="debt" placeholder="Общая сумма долга">
+                </div>
+                
+                <div class="form__group">
+                    <input type="text" class="form__input" name="city" placeholder="Город">
+                </div>
+                
+                <div class="form__group">
+                    <textarea class="form__textarea" name="message" placeholder="Дополнительная информация" rows="4"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn--primary btn--full">
+                    Получить бесплатную консультацию
+                </button>
+                
+                <p class="form__privacy">
+                    Нажимая кнопку, вы соглашаетесь с 
+                    <a href="/privacy-policy.html" class="link" target="_blank">политикой конфиденциальности</a>
+                </p>
+            </form>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- ========== КОНТАКТЫ ========== -->
     <section class="contacts section" id="contacts">
