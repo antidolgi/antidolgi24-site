@@ -304,10 +304,20 @@ h3 { font-size: 1.25rem; }
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding-top: 80px; /* Компенсация фиксированного хедера */
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-bg-dark) 100%);
+    padding-top: 80px;
+    /* ФОН: градиент + картинка */
+    background: 
+        linear-gradient(135deg, rgba(26, 58, 92, 0.85) 0%, rgba(15, 23, 42, 0.9) 100%),
+        url('../images/hero-bg.jpg') center/cover no-repeat fixed;
     color: var(--color-white);
     overflow: hidden;
+}
+
+/* Фолбэк для старых браузеров */
+@supports not (background: linear-gradient(...), url(...)) {
+    .hero {
+        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-bg-dark) 100%);
+    }
 }
 
 .hero__overlay {
