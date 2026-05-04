@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Эффект при наведении на ссылки/кнопки
-    const hoverElements = document.querySelectorAll('a, button, .service-card, .accordion-header, input, select, .logo');
+    const hoverElements = document.querySelectorAll('a, button, .service-card, .accordion-header, input, select, .logo, lottie-player');
     hoverElements.forEach(el => {
       el.addEventListener('mouseenter', () => cursor.classList.add('active'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
