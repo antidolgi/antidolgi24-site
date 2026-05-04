@@ -317,3 +317,63 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+// reCAPTCHA v3 + AJAX-отправка формы
+function handleFormSubmit(e) {
+  e.preventDefault();
+  const form = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+
+  // Проверяем валидность формы
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return false;
+  }
+
+  // Блокируем кнопку, чтобы избежать повторной отправки
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Отправка...';
+
+  // Выполняем reCAPTCHA (замените YOUR_SITE_KEY на реальный ключ)
+  grecaptcha.ready(function() {
+    grecaptcha.execute('YOUR_SITE_KEY', {action: 'submit'}).then(function(token) {
+      // Добавляем скрытое поле с токеном
+      const tokenInput = document.createElement('input');
+      tokenInput.type = 'hidden';
+      tokenInput.name = 'g-recaptcha-response';
+      tokenInput.value = token;
+      form.appendChild(tokenInput);
+
+      // Собираем данные формы
+      const formData = new FormData(form);
+
+      // Отправляем через fetch
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.href = 'thanks.html';
+        } else {
+          alert('Произошла ошибка. Пожалуйста, позвоните нам по телефону 8 995 788-66-68.');
+        }
+      })
+      .catch(error => {
+        console.error('Ошибка отправки:', error);
+        alert('Произошла ошибка. Пожалуйста, позвоните нам по телефону 8 995 788-66-68.');
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Отправить';
+        // Удаляем временное поле с токеном
+        tokenInput.remove();
+      });
+    });
+  });
+}
+
+// Навешиваем обработчик
+document.getElementById('contactForm').addEventListener('submit', handleFormSubmit);
