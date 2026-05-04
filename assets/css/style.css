@@ -32,13 +32,13 @@ body {
   cursor: none;
 }
 
-a, button, input, select, textarea, .accordion-header, .service-card, .btn, .logo {
+a, button, input, select, textarea, .accordion-header, .service-card, .btn, .logo, lottie-player {
   cursor: none;
 }
 
 /* Убираем дефолтный курсор для тач-устройств */
 @media (pointer: coarse) {
-  html, body, a, button, input, select, textarea {
+  html, body, a, button, input, select, textarea, lottie-player {
     cursor: auto;
   }
   .cursor, .cursor-trail {
