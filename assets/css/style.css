@@ -596,3 +596,78 @@ select {
     font-size: 2rem;
   }
 }
+/* Стили для кастомного чекбокса */
+.checkbox-group {
+  margin: 15px 0;
+}
+
+.custom-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  position: relative;
+  user-select: none;
+}
+
+.custom-checkbox input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkmark {
+  min-width: 20px;
+  height: 20px;
+  border: 2px solid var(--gold);
+  background: transparent;
+  display: inline-block;
+  position: relative;
+  transition: background 0.2s;
+  margin-top: 2px;
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+  background: var(--gold);
+}
+
+.custom-checkbox input:checked ~ .checkmark::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid var(--bg-dark);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-text a {
+  color: var(--gold);
+  text-decoration: underline;
+}
+
+/* Стили для обязательного дисклеймера */
+.disclaimer-block {
+  background: rgba(203, 164, 104, 0.05);
+  border: 1px solid rgba(203, 164, 104, 0.2);
+  padding: 12px 20px;
+  margin: 25px 0;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Ссылка на политику в футере */
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
