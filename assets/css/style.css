@@ -24,6 +24,7 @@ html {
   color: var(--white);
   font-family: var(--font-body);
   cursor: none;
+  scroll-padding-top: 90px;
 }
 
 body {
@@ -129,7 +130,7 @@ a, button, input, select, textarea, .accordion-header, .service-card, .btn, .log
 }
 
 .header.scrolled {
-  background: rgba(10, 46, 31, 0.85);
+  background: rgba(15, 58, 40, 0.92);
   backdrop-filter: blur(12px);
 }
 
