@@ -2,50 +2,17 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // === Прелоадер ===
-  const preloader = document.getElementById('preloader');
-  const preloaderText = document.querySelector('.preloader-text');
-  const scalesSVG = document.querySelector('.preloader-scales svg');
-
-  // Анимация весов: чаши раскачиваются и приходят в равновесие
-  const tlPreloader = gsap.timeline({
-    onComplete: () => {
-      gsap.to(preloader, {
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      gsap.to('#preloader', {
         opacity: 0,
         duration: 0.6,
         onComplete: () => {
-          preloader.style.display = 'none';
+          document.getElementById('preloader').style.display = 'none';
         }
       });
-    }
+    }, 1500);
   });
-
-  tlPreloader
-    .from(scalesSVG.querySelectorAll('line, path, circle'), {
-      opacity: 0,
-      strokeDasharray: 200,
-      strokeDashoffset: 200,
-      duration: 1,
-      stagger: 0.1,
-      ease: 'power2.inOut'
-    })
-    .to('.preloader-text', {
-      opacity: 1,
-      duration: 0.5,
-      y: -10
-    }, '-=0.3')
-    .to('.preloader-scales', {
-      rotate: -4,
-      duration: 0.8,
-      yoyo: true,
-      repeat: 1,
-      transformOrigin: '50% 35%',
-      ease: 'sine.inOut'
-    })
-    .to('.preloader-scales', {
-      rotate: 0,
-      duration: 0.6,
-      ease: 'elastic.out(1, 0.5)'
-    });
 
   // === Кастомный курсор ===
   const cursor = document.querySelector('.cursor');
@@ -53,19 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (window.matchMedia('(pointer: fine)').matches) {
     document.addEventListener('mousemove', (e) => {
-      gsap.to(cursor, {
-        x: e.clientX,
-        y: e.clientY,
-        duration: 0.1
-      });
-      gsap.to(cursorTrail, {
-        x: e.clientX,
-        y: e.clientY,
-        duration: 0.4
-      });
+      gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1 });
+      gsap.to(cursorTrail, { x: e.clientX, y: e.clientY, duration: 0.4 });
     });
 
-    // Эффект при наведении на ссылки/кнопки
     const hoverElements = document.querySelectorAll('a, button, .service-card, .accordion-header, input, select, .logo, lottie-player');
     hoverElements.forEach(el => {
       el.addEventListener('mouseenter', () => cursor.classList.add('active'));
@@ -92,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
     detectRetina: true
   }).catch(console.error);
 
-  // Мобильным отключаем частицы (в CSS уже скрыто, но можно выгрузить)
   if (window.matchMedia('(max-width: 768px)').matches) {
     tsParticles.domItem(0)?.destroy();
   }
@@ -115,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
       navList.style.display = navList.style.display === 'flex' ? 'none' : 'flex';
       burger.classList.toggle('active');
     });
-    // Закрыть меню по клику на ссылку
     navList.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         navList.style.display = 'none';
@@ -134,11 +90,11 @@ document.addEventListener('DOMContentLoaded', () => {
       stagger: 0.08,
       duration: 0.8,
       ease: 'power3.out',
-      delay: 0.5 // после прелоадера
+      delay: 0.5
     });
   }
 
-  // === Tilt на карточках услуг (только не мобильные) ===
+  // === Tilt на карточках услуг ===
   if (window.matchMedia('(min-width: 769px)').matches) {
     VanillaTilt.init(document.querySelectorAll('.service-card'), {
       max: 8,
@@ -164,10 +120,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // === Таймлайн: линия прогресса и появление шагов ===
+  // === Таймлайн ===
   const timeline = document.querySelector('.timeline');
   if (timeline) {
-    // Создаём элемент линии прогресса
     const progressLine = document.createElement('div');
     progressLine.classList.add('timeline__progress-line');
     progressLine.style.cssText = `
@@ -182,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     timeline.prepend(progressLine);
 
-    // Анимируем высоту линии по мере скролла
     gsap.to(progressLine, {
       scrollTrigger: {
         trigger: timeline,
@@ -194,7 +148,6 @@ document.addEventListener('DOMContentLoaded', () => {
       ease: 'none'
     });
 
-    // Появление элементов таймлайна
     const items = timeline.querySelectorAll('.timeline__item');
     items.forEach((item, i) => {
       gsap.from(item, {
@@ -211,18 +164,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // === Аккордеон FAQ ===
+  // === FAQ аккордеон ===
   document.querySelectorAll('.accordion-header').forEach(btn => {
     btn.addEventListener('click', () => {
       const body = btn.nextElementSibling;
       const isActive = body.classList.contains('active');
-
-      // Закрываем все
       document.querySelectorAll('.accordion-body').forEach(b => b.classList.remove('active'));
-
-      if (!isActive) {
-        body.classList.add('active');
-      }
+      if (!isActive) body.classList.add('active');
     });
   });
 
@@ -276,11 +224,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (hasProp && typeof workCostMin === 'number') {
-      // Допустим, сохранение имущества увеличивает стоимость на 20%
       workCostMin = Math.round(workCostMin * 1.2);
       workCostMax = Math.round(workCostMax * 1.2);
-    } else if (hasProp && workCostMin === 'индивидуально') {
-      // при крупных долгах + имущество — тоже индивидуально
     }
 
     const deposit = '25 000 – 50 000 ₽';
@@ -300,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
     calcResult.style.display = 'block';
   });
 
-  // === Плавный скролл для якорных ссылок (учитываем фиксированный хедер) ===
+  // === Плавный скролл ===
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
@@ -315,44 +260,36 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-
 });
+
 // reCAPTCHA v3 + AJAX-отправка формы
 function handleFormSubmit(e) {
   e.preventDefault();
   const form = document.getElementById('contactForm');
   const submitBtn = document.getElementById('submitBtn');
 
-  // Проверяем валидность формы
   if (!form.checkValidity()) {
     form.reportValidity();
     return false;
   }
 
-  // Блокируем кнопку, чтобы избежать повторной отправки
   submitBtn.disabled = true;
   submitBtn.textContent = 'Отправка...';
 
-  // Выполняем reCAPTCHA (замените YOUR_SITE_KEY на реальный ключ)
   grecaptcha.ready(function() {
     grecaptcha.execute('YOUR_SITE_KEY', {action: 'submit'}).then(function(token) {
-      // Добавляем скрытое поле с токеном
       const tokenInput = document.createElement('input');
       tokenInput.type = 'hidden';
       tokenInput.name = 'g-recaptcha-response';
       tokenInput.value = token;
       form.appendChild(tokenInput);
 
-      // Собираем данные формы
       const formData = new FormData(form);
 
-      // Отправляем через fetch
       fetch(form.action, {
         method: 'POST',
         body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
+        headers: { 'Accept': 'application/json' }
       })
       .then(response => {
         if (response.ok) {
@@ -368,12 +305,10 @@ function handleFormSubmit(e) {
       .finally(() => {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Отправить';
-        // Удаляем временное поле с токеном
         tokenInput.remove();
       });
     });
   });
 }
 
-// Навешиваем обработчик
 document.getElementById('contactForm').addEventListener('submit', handleFormSubmit);
