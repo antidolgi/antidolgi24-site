@@ -58,19 +58,19 @@
 </head>
 <body>
   <!-- Прелоадер -->
-  <div id="preloader">
-    <div class="preloader-scales">
-      <svg viewBox="0 0 200 200" width="150" height="150">
-        <line x1="100" y1="20" x2="100" y2="140" stroke="#CBA468" stroke-width="2"/>
-        <line x1="100" y1="70" x2="40" y2="100" stroke="#CBA468" stroke-width="2"/>
-        <path d="M30 100 L50 105 L45 120 L25 115 Z" fill="none" stroke="#CBA468" stroke-width="2"/>
-        <line x1="100" y1="70" x2="160" y2="100" stroke="#CBA468" stroke-width="2"/>
-        <path d="M170 100 L150 105 L155 120 L175 115 Z" fill="none" stroke="#CBA468" stroke-width="2"/>
-        <circle cx="100" cy="70" r="4" fill="#CBA468"/>
-      </svg>
-      <div class="preloader-text">Антидолги24</div>
-    </div>
+<div id="preloader">
+  <div class="preloader-scales">
+    <lottie-player 
+      src="assets/lottie/Scales.json" 
+      background="transparent" 
+      speed="1" 
+      style="width: 150px; height: 150px;" 
+      loop 
+      autoplay>
+    </lottie-player>
+    <div class="preloader-text">Антидолги24</div>
   </div>
+</div>
 
   <!-- Кастомный курсор -->
   <div class="cursor"></div>
@@ -79,7 +79,17 @@
   <!-- Хедер -->
   <header class="header" id="header">
     <div class="container header__inner">
-      <a href="#" class="logo">Антидолги24</a>
+      <a href="#" class="logo">
+  <lottie-player 
+    src="assets/lottie/Scales.json" 
+    background="transparent" 
+    speed="1" 
+    style="width: 36px; height: 36px; display: inline-block; vertical-align: middle; margin-right: 8px;" 
+    loop 
+    autoplay>
+  </lottie-player>
+  <span>Антидолги24</span>
+</a>
       <nav class="nav">
         <ul class="nav__list">
           <li><a href="#services">Услуги</a></li>
@@ -126,22 +136,31 @@
         <h2 class="section__title">Наши услуги</h2>
         <div class="services__grid">
           <div class="service-card" data-tilt>
-            <lottie-player src="assets/lottie/shield.json" background="transparent" speed="1" style="width:80px;height:80px" loop autoplay></lottie-player>
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#CBA468" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+  <path d="m9 12 2 2 4-4"/>
+</svg>
             <h3>Банкротство физлиц</h3>
             <p>Спишем долги через суд или МФЦ. Сохраним имущество.</p>
           </div>
           <div class="service-card" data-tilt>
-            <lottie-player src="assets/lottie/gavel.json" background="transparent" speed="1" style="width:80px;height:80px" loop autoplay></lottie-player>
+            <lottie-player src="assets/lottie/Gavel.json" background="transparent" speed="1" style="width:80px;height:80px" loop autoplay></lottie-player>
             <h3>Банкротство юрлиц</h3>
             <p>Ликвидация бизнеса без долгов. Полная правовая поддержка.</p>
           </div>
           <div class="service-card" data-tilt>
-            <lottie-player src="assets/lottie/home.json" background="transparent" speed="1" style="width:80px;height:80px" loop autoplay></lottie-player>
+            <lottie-player src="assets/lottie/wired-flat-63-home-morph-mantion.json" background="transparent" speed="1" style="width:80px;height:80px" loop autoplay></lottie-player>
             <h3>Сохранение имущества</h3>
             <p>Защитим ваше единственное жильё и личные вещи.</p>
           </div>
           <div class="service-card" data-tilt>
-            <lottie-player src="assets/lottie/collector-stop.json" background="transparent" speed="1" style="width:80px;height:80px" loop autoplay></lottie-player>
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#CBA468" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M18 11V6a2 2 0 0 0-4 0v1"/>
+  <path d="M14 10V4a2 2 0 0 0-4 0v6"/>
+  <path d="M10 9V5a2 2 0 0 0-4 0v7"/>
+  <circle cx="12" cy="16" r="6"/>
+  <line x1="9" y1="13" x2="15" y2="19"/>
+</svg>
             <h3>Защита от коллекторов</h3>
             <p>Прекратим звонки и давление с первого дня работы.</p>
           </div>
@@ -160,7 +179,7 @@
             <p>успешных дел</p>
           </div>
           <div class="adv-item">
-            <lottie-player src="assets/lottie/scales.json" background="transparent" speed="1" style="width:100px;height:100px" loop autoplay></lottie-player>
+            <lottie-player src="assets/lottie/Scales.json" background="transparent" speed="1" style="width:100px;height:100px" loop autoplay></lottie-player>
             <div class="adv-number">9 лет</div>
             <p>юридического опыта</p>
           </div>
