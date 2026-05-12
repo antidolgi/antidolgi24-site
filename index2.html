@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Антидолги24 — Законное банкротство по фиксированной цене от 120 000 руб.</title>
+  <meta name="description" content="Банкротство физических лиц под ключ. Акция мая: фиксированная цена 120 000 руб. Без скрытых платежей. Рассрочка. Конфиденциально. Работаем по всей России.">
+  <meta name="keywords" content="банкротство, банкротство физических лиц, освобождение от долгов, фиксированная цена, акция, рассрочка, защита от коллекторов">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Антидолги24 — Банкротство за 120 000 руб. (акция)">
+  <meta property="og:description" content="Законное освобождение от долгов. Фиксированная цена. Конфиденциально. Звоните 8-995-788-66-68.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://antidolgi24.ru/">
+  <meta property="og:image" content="https://antidolgi24.ru/assets/img/og-image.jpg">
+
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@600;700&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green-safe: #0F3A28;
+      --green-calm: #1E5A4C;
+      --gold: #CBA468;
+      --gold-dark: #B8954A;
+      --white: #ffffff;
+      --bg-light: #F8F5F0;
+      --text-dark: #1a1a1a;
+      --text-soft: #2c2c2c;
+      --border-radius: 6px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-soft);
+      line-height: 1.6;
+    }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--green-safe); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Шапка */
+    .header {
+      background: var(--green-safe);
+      color: var(--white);
+      padding: 15px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--white);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+    }
+    .logo svg {
+      width: 36px;
+      height: 36px;
+      margin-right: 8px;
+      stroke: var(--gold);
+    }
+    .header-phone {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .header-phone:hover { text-decoration: underline; }
+
+    /* Кнопки */
+    .btn {
+      display: inline-block;
+      padding: 14px 30px;
+      border: none;
+      border-radius: var(--border-radius);
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+      text-transform: uppercase;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--green-safe);
+    }
+    .btn-primary:hover { background: var(--gold-dark); transform: scale(1.02); }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--gold);
+      color: var(--white);
+      margin-left: 10px;
+    }
+    .btn-outline:hover { background: rgba(203,164,104,0.1); }
+
+    /* Hero акции */
+    .promo-hero {
+      background: linear-gradient(135deg, #0F3A28 0%, #1E5A4C 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 100px 20px 60px;
+      margin-top: 70px;
+    }
+    .promo-hero h1 { color: var(--white); font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 15px; }
+    .price-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--green-safe);
+      font-size: 2.5rem;
+      font-weight: 700;
+      padding: 10px 30px;
+      border-radius: var(--border-radius);
+      margin: 20px 0;
+      letter-spacing: 1px;
+    }
+    .timer, .places {
+      font-size: 1.2rem;
+      margin: 10px 0;
+    }
+    .timer span, .places span { font-weight: 700; }
+
+    /* Секции */
+    .section {
+      padding: 60px 0;
+    }
+    .section h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2.2rem;
+      color: var(--green-safe);
+    }
+
+    /* Сетка преимуществ */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+      text-align: center;
+    }
+    .benefit-item {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      padding: 30px 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    }
+    .benefit-item svg { width: 48px; height: 48px; stroke: var(--green-calm); margin-bottom: 15px; }
+    .benefit-item h3 { margin-bottom: 10px; }
+
+    /* Таблица цен */
+    .price-table {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 30px;
+    }
+    .price-card {
+      background: var(--white);
+      border: 1px solid #e0dcd5;
+      border-radius: var(--border-radius);
+      padding: 30px 25px;
+      text-align: center;
+      flex: 1 1 220px;
+      max-width: 280px;
+    }
+    .price-card .price {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--green-safe);
+      margin: 15px 0;
+    }
+    .price-card .old-price {
+      text-decoration: line-through;
+      color: #999;
+      font-size: 1rem;
+    }
+    .price-card.popular {
+      border: 2px solid var(--gold);
+      position: relative;
+    }
+    .popular-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--green-safe);
+      font-weight: 700;
+      padding: 4px 15px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+
+    /* Гарантия */
+    .guarantee-box {
+      background: #eef5f1;
+      border-left: 6px solid var(--green-safe);
+      padding: 25px 30px;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      border-radius: var(--border-radius);
+    }
+
+    /* Шаги */
+    .steps-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      text-align: center;
+    }
+    .step {
+      flex: 1 1 200px;
+      max-width: 250px;
+    }
+    .step-number {
+      background: var(--green-safe);
+      color: var(--white);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+
+    /* Кейсы */
+    .case-card {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      padding: 25px 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .case-card h3 { margin-bottom: 10px; }
+
+    /* FAQ */
+    .accordion-item {
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 5px;
+    }
+    .accordion-header {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 18px 20px;
+      text-align: left;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      color: var(--green-safe);
+    }
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      padding: 0 20px;
+      color: var(--text-soft);
+    }
+    .accordion-body.active { max-height: 300px; padding-bottom: 20px; }
+
+    /* Форма */
+    .form-container {
+      max-width: 500px;
+      margin: 0 auto;
+      background: var(--white);
+      padding: 35px;
+      border-radius: var(--border-radius);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group input {
+      width: 100%;
+      padding: 14px;
+      border: 2px solid #dcd5cc;
+      border-radius: var(--border-radius);
+      font: inherit;
+    }
+    .form-group input:focus { border-color: var(--gold); outline: none; }
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+      gap: 8px;
+      cursor: pointer;
+    }
+    .btn-submit {
+      width: 100%;
+      background: var(--green-safe);
+      color: var(--white);
+      padding: 16px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+    .btn-submit:hover { background: #09281A; }
+
+    /* Футер */
+    .footer {
+      background: var(--green-safe);
+      color: var(--white);
+      text-align: center;
+      padding: 30px 0;
+    }
+    .footer a { color: var(--gold); }
+    .legal-note {
+      background: #fff3e0;
+      border-left: 4px solid var(--gold);
+      padding: 15px 20px;
+      margin: 30px auto;
+      max-width: 800px;
+      font-size: 0.85rem;
+      border-radius: var(--border-radius);
+    }
+
+    @media (max-width: 600px) {
+      .header-phone { font-size: 1rem; }
+      .price-badge { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Шапка -->
+  <header class="header">
+    <div class="container">
+      <a href="#" class="logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="5" r="2"/><path d="M12 7v8"/><path d="m3 21 4-8h10l4 8"/>
+        </svg>
+        Антидолги24
+      </a>
+      <a href="tel:89957886668" class="header-phone">8 995 788-66-68</a>
+    </div>
+  </header>
+
+  <!-- Акционный Hero -->
+  <section class="promo-hero">
+    <h1>Верните себе право на новую жизнь без долгов</h1>
+    <p style="font-size:1.2rem; margin-bottom:10px;">Акция мая 2026: фиксированная цена за всю процедуру</p>
+    <div class="price-badge">120 000 ₽</div>
+    <div class="timer" id="timer">До конца акции: <span>загрузка...</span></div>
+    <div class="places">Осталось мест по акции: <span id="placesLeft">4</span></div>
+    <a href="#form" class="btn btn-primary" style="margin-top:20px;">Оставить заявку</a>
+    <a href="tel:89957886668" class="btn btn-outline">Позвонить сейчас</a>
+  </section>
+
+  <!-- Преимущества акции -->
+  <section class="section" style="background:var(--white);">
+    <div class="container">
+      <h2>Почему именно сейчас?</h2>
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          <h3>Честная фиксированная цена</h3>
+          <p>Никаких доплат. Вы платите именно 120 000 руб. за всё, кроме судебных расходов.</p>
+        </div>
+        <div class="benefit-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <h3>Рассрочка на время процедуры</h3>
+          <p>Платите комфортными частями, пока длится банкротство. Обсудим удобный график.</p>
+        </div>
+        <div class="benefit-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <h3>Конфиденциально</h3>
+          <p>Никто не узнает о вашей проблеме. Ваши данные под надёжной защитой.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Как проходит процедура -->
+  <section class="section">
+    <div class="container">
+      <h2>Как это будет происходить</h2>
+      <div class="steps-row">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h4>Бесплатная консультация</h4>
+          <p>Расскажите о ситуации, мы оценим перспективы и предложим стратегию.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h4>Сбор и подача документов</h4>
+          <p>Мы делаем всю бумажную работу. Вам останется только подписать готовое.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h4>Освобождение от долгов</h4>
+          <p>Суд завершает процедуру. Вы получаете законное освобождение — чистый лист.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Гарантия возврата -->
+  <section class="section" style="background:var(--white);">
+    <div class="container">
+      <h2>Наша гарантия возврата</h2>
+      <div class="guarantee-box">
+        <p style="font-size:1.1rem; margin-bottom:10px;">Если по нашей вине суд не примет подготовленное заявление, <strong>мы вернём вам деньги</strong>.</p>
+        <p>Мы настолько уверены в своём профессионализме, что готовы подтвердить это финансово.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Цены на стандартные услуги (для тех, кто не попадает под акцию) -->
+  <section class="section">
+    <div class="container">
+      <h2>Стандартные цены на банкротство</h2>
+      <p style="text-align:center; margin-bottom:30px;">Если ваша ситуация не подходит под условия акции, мы всё равно поможем по прозрачным тарифам.</p>
+      <div class="price-table">
+        <div class="price-card">
+          <h3>Долг до 1,5 млн ₽</h3>
+          <div class="price">180 000 ₽</div>
+          <p>Без залогового имущества, стандартная процедура.</p>
+        </div>
+        <div class="price-card popular">
+          <span class="popular-badge">Чаще выбирают</span>
+          <h3>Долг 1,5–5 млн ₽</h3>
+          <div class="price">210 000 ₽</div>
+          <p>Сложные случаи, включая сохранение имущества.</p>
+        </div>
+        <div class="price-card">
+          <h3>Долг свыше 5 млн ₽</h3>
+          <div class="price">350 000 ₽</div>
+          <p>Индивидуальный расчёт, комплексная защита.</p>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top:30px; font-size:0.9rem;">* В стоимость не включены судебный депозит (25 000 – 50 000 руб.) и почтовые расходы.</p>
+    </div>
+  </section>
+
+  <!-- Кейсы -->
+  <section class="section" style="background:var(--white);">
+    <div class="container">
+      <h2>Истории людей, которые уже освободились от долгов</h2>
+      <div class="case-card">
+        <h3>Дело №А41-39025/19</h3>
+        <p><em>«Я стеснялась даже выйти из дома из-за звонков коллекторов»</em> — Дарья Е., имевшая более 100 микрозаймов, полностью освобождена от обязательств.</p>
+        <p><strong>Результат: полное списание долгов.</strong></p>
+      </div>
+      <div class="case-card">
+        <h3>Дело №А40-272373/2021</h3>
+        <p><em>«Я думала, что всё потеряно, но юристы отстояли моё единственное имущество»</em> — Эвелина М., инвалид 1 группы, списала долги и сохранила автомобиль.</p>
+        <p><strong>Результат: автомобиль сохранен, долги списаны.</strong></p>
+      </div>
+      <div class="case-card">
+        <h3>Дело №А40-101575/21</h3>
+        <p><em>«Мошенники оформили кредит на 1,5 млн на моё имя, я была в ужасе»</em> — Юлия Ж., против неё возбудили уголовное дело, но мы добились банкротства.</p>
+        <p><strong>Результат: процедура банкротства успешно проведена.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <h2>Часто задаваемые вопросы</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-header">Боюсь, что потеряю единственное жильё</button>
+          <div class="accordion-body"><p>Нет, по закону (ст. 446 ГПК РФ) ваше единственное пригодное для проживания жильё не может быть взыскано. Мы поможем его сохранить.</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">Вдруг не получится, и я зря потрачу деньги?</button>
+          <div class="accordion-body"><p>Мы даём гарантию возврата средств, если суд не примет заявление по нашей вине. Наш многолетний опыт и 1300+ успешных дел подтверждают: мы доводим до результата.</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">Как долго продлится процедура?</button>
+          <div class="accordion-body"><p>Обычно 8–12 месяцев, в зависимости от сложности. Вы будете получать от нас регулярные отчёты, чтобы понимать, на каком этапе находитесь.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Форма заявки -->
+  <section class="section" id="form" style="background: linear-gradient(135deg, #f5f0e9, #e8e0d5);">
+    <div class="container">
+      <div class="form-container">
+        <h2 style="text-align:center; margin-bottom:25px;">Оставьте заявку и получите консультацию</h2>
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="promoForm">
+          <div style="position:absolute; left:-9999px;" aria-hidden="true">
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Ваше имя" required>
+          </div>
+          <div class="form-group">
+            <input type="tel" name="phone" placeholder="Телефон" required>
+          </div>
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" name="privacy_agree" required>
+              Я согласен на обработку персональных данных в соответствии с <a href="privacy.html" target="_blank">Политикой</a>
+            </label>
+          </div>
+          <button type="submit" class="btn-submit">Отправить заявку</button>
+          <p style="text-align:center; font-size:0.75rem; margin-top:15px; color:#666;">Нажимая кнопку, вы принимаете условия акции. Мы не передаём ваши данные.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Дисклеймер -->
+  <div class="legal-note container">
+    ⚠️ Банкротство влечет негативные последствия: ограничение на получение кредитов, запрет на повторное банкротство в течение 5 лет. Услуги оказываются в рамках ФЗ «О несостоятельности (банкротстве)». Акция действительна 13.05–17.05, 20.05–23.05, 25.05–30.05.2026 для физлиц с долгом до 1,5 млн руб. без залогового имущества. Судебный депозит и почтовые расходы оплачиваются отдельно. Организатор: ООО «Антидолги24». Информация на сайте не является публичной офертой.
+  </div>
+
+  <!-- Футер -->
+  <footer class="footer">
+    <div class="container">
+      <p>© Антидолги24, 2026. Телефон: 8 995 788-66-68</p>
+      <p><a href="privacy.html">Политика обработки персональных данных</a></p>
+      <p>Разработка и дизайн: <a href="https://studio817.ru/banan">studio817.ru/banan</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Таймер и счётчик мест
+    function getNextPeriodEnd() {
+      const now = new Date();
+      const periods = [
+        { start: new Date(2026,4,13,0,0,0), end: new Date(2026,4,17,23,59,59) },
+        { start: new Date(2026,4,20,0,0,0), end: new Date(2026,4,23,23,59,59) },
+        { start: new Date(2026,4,25,0,0,0), end: new Date(2026,4,30,23,59,59) }
+      ];
+      for (let p of periods) {
+        if (now >= p.start && now <= p.end) return p.end;
+        if (now < p.start) return p.start;
+      }
+      return null;
+    }
+
+    function updateTimer() {
+      const timerSpan = document.querySelector('#timer span');
+      const end = getNextPeriodEnd();
+      if (!end) {
+        timerSpan.textContent = 'Акция завершена';
+        return;
+      }
+      const diff = end - new Date();
+      if (diff <= 0) {
+        timerSpan.textContent = 'Акция завершена';
+        return;
+      }
+      const h = Math.floor(diff / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      timerSpan.textContent = `${h} ч ${m} мин ${s} сек`;
+    }
+    setInterval(updateTimer, 1000);
+    updateTimer();
+
+    // Имитация уменьшения мест при отправке формы
+    document.getElementById('promoForm').addEventListener('submit', () => {
+      setTimeout(() => {
+        let places = parseInt(document.getElementById('placesLeft').textContent);
+        if (places > 1) places--;
+        document.getElementById('placesLeft').textContent = places;
+      }, 3000);
+    });
+
+    // Аккордеон FAQ
+    document.querySelectorAll('.accordion-header').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const body = btn.nextElementSibling;
+        const isActive = body.classList.contains('active');
+        document.querySelectorAll('.accordion-body').forEach(b => b.classList.remove('active'));
+        if (!isActive) body.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
