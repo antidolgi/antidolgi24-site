@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Антидолги24 — Банкротство от 120 000 руб. под ключ (акция до 30 мая)</title>
+  <title>Антидолги24 — Банкротство от 120 000 руб. под ключ (акция до 18 мая, количество мест ограничено)</title>
   <meta name="description" content="Банкротство физических лиц по фиксированной цене. Рассрочка. Гарантия возврата, если суд откажет. Без скрытых платежей. Акция мая.">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Антидолги24 — Банкротство за 120 000 руб. (акция)">
@@ -155,7 +155,7 @@
         <img src="assets/img/dad-lawyer.jpg" alt="Ведущий юрист Антидолги24">
       </div>
       <div class="hero-text">
-        <h1>АКЦИЯ до 18 мая: избавьтесь от долгов (даже если коллекторы звонят) за 120 000 ₽ — без скрытых платежей</h1>
+        <h1>АКЦИЯ до 18 мая: избавьтесь от долгов (коллекторы могут перестать звонить СЕГОДНЯ) за 120 000 ₽ — без скрытых платежей</h1>
 <p>Законное банкротство физических лиц под ключ. Рассрочка на время процедуры. Гарантия: если по нашей вине суд не примет заявление, вернём деньги.</p>
         <div class="price-badge">120 000 ₽</div>
         <div class="timer" id="timer">До конца акции: <span>...</span></div>
@@ -284,7 +284,7 @@
   </section>
 
   <div class="legal-note container">
-    ⚠️ Банкротство влечет негативные последствия: ограничение на получение кредитов, запрет на повторное банкротство в течение 5 лет. Услуги оказываются в рамках ФЗ «О несостоятельности (банкротстве)». Акция проводится поэтапно: 13.05 (12:30) – 18.05 (12:30); 21.05 (07:00) – 26.05 (07:00); 30.05 (07:00) – 10.06 (07:00) 2026 для физлиц с долгом до 1,5 млн руб. без залогового имущества. Судебный депозит и почтовые расходы оплачиваются отдельно. Организатор: ООО «Агенство ППАУ». Информация на сайте не является публичной офертой.
+    ⚠️ Банкротство влечет негативные последствия: ограничение на получение кредитов, запрет на повторное банкротство в течение 5 лет. Услуги оказываются в рамках ФЗ «О несостоятельности (банкротстве)». Акция действует ограниченное время только для физлиц с долгом до 1,5 млн руб. без залогового имущества. Точные даты и условия уточняйте по телефону. Судебный депозит и почтовые расходы оплачиваются отдельно. Организатор: ООО «Агенство ППАУ». Информация на сайте не является публичной офертой.
   </div>
 
   <footer class="footer">
@@ -296,10 +296,11 @@
   </footer>
 
   <script>
+  <script>
   const periods = [
     { start: new Date(2026, 4, 13, 12, 30, 0), end: new Date(2026, 4, 18, 12, 30, 0) },
     { start: new Date(2026, 4, 21, 7, 0, 0),  end: new Date(2026, 4, 26, 7, 0, 0) },
-    { start: new Date(2026, 4, 30, 7, 0, 0),  end: new Date(2026, 5, 10, 7, 0, 0) } // июнь
+    { start: new Date(2026, 4, 30, 7, 0, 0),  end: new Date(2026, 5, 10, 7, 0, 0) } // 30 мая – 10 июня
   ];
 
   function getActivePeriod() {
@@ -321,17 +322,19 @@
       return;
     }
     if (block) block.style.display = 'block';
-    
+
+    const end = active.end;
     const diff = end - new Date();
     if (diff <= 0) {
       timerSpan.textContent = 'Акция завершена';
       if (placesSpan) placesSpan.textContent = '0';
       return;
     }
-const days = Math.floor(diff / 86400000);
-const hours = Math.floor((diff % 86400000) / 3600000);
-const minutes = Math.floor((diff % 3600000) / 60000);
-timerSpan.textContent = `${days} дн. ${hours} ч. ${minutes} мин.`;
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const minutes = Math.floor((diff % 3600000) / 60000);
+    timerSpan.textContent = `${days} дн. ${hours} ч. ${minutes} мин.`;
+  }
 
   setInterval(updatePromo, 1000);
   updatePromo();
@@ -352,23 +355,16 @@ timerSpan.textContent = `${days} дн. ${hours} ч. ${minutes} мин.`;
       const isActive = body.classList.contains('active');
       document.querySelectorAll('.accordion-body').forEach(b => b.classList.remove('active'));
       if (!isActive) body.classList.add('active');
-       // Отключаем видео-сюрприз на мобильных (оставляем только фото)
-if (window.matchMedia('(pointer: coarse)').matches) {
-  const catSurprise = document.getElementById('catSurprise');
-  if (catSurprise) {
-    catSurprise.classList.add('no-hover');
-  }
-}
     });
   });
-    // Отключаем видео-сюрприз на мобильных (оставляем только фото)
-if (window.matchMedia('(pointer: coarse)').matches) {
-  const catSurprise = document.getElementById('catSurprise');
-  if (catSurprise) {
-    catSurprise.classList.add('no-hover');
+
+  // Отключаем видео-сюрприз на мобильных (оставляем только фото)
+  if (window.matchMedia('(pointer: coarse)').matches) {
+    const catSurprise = document.getElementById('catSurprise');
+    if (catSurprise) {
+      catSurprise.classList.add('no-hover');
+    }
   }
-}
-    
 </script>
 </body>
 </html>
