@@ -307,7 +307,7 @@
     </div>
   </footer>
 
-  <script>
+<script>
   const periods = [
     { start: new Date(2026, 4, 13, 12, 30, 0), end: new Date(2026, 4, 18, 12, 30, 0) },
     { start: new Date(2026, 4, 21, 7, 0, 0),  end: new Date(2026, 4, 26, 7, 0, 0) },
@@ -350,13 +350,44 @@
   setInterval(updatePromo, 1000);
   updatePromo();
 
-  // Счётчик мест (уменьшается при отправке формы)
+  // Форма с асинхронной отправкой
   document.getElementById('promoForm').addEventListener('submit', function(e) {
-    setTimeout(() => {
-      let places = parseInt(document.getElementById('placesLeft').textContent);
-      if (places > 1) places--;
-      document.getElementById('placesLeft').textContent = places;
-    }, 3000);
+    e.preventDefault(); // останавливаем стандартную отправку
+
+    const form = e.target;
+    const submitBtn = form.querySelector('.btn-submit');
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Отправка...';
+
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+      if (response.ok) {
+        // Успех: уменьшаем счётчик мест и перенаправляем
+        const placesSpan = document.getElementById('placesLeft');
+        let places = parseInt(placesSpan.textContent);
+        if (places > 1) places--;
+        placesSpan.textContent = places;
+
+        window.location.href = 'thanks.html';
+      } else {
+        alert('Ошибка при отправке. Позвоните нам: 8 995 788-66-68');
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      alert('Ошибка сети. Позвоните нам: 8 995 788-66-68');
+    })
+    .finally(() => {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    });
   });
 
   // Аккордеон FAQ
@@ -369,7 +400,7 @@
     });
   });
 
-  // Отключаем видео-сюрприз на мобильных (оставляем только фото)
+  // Отключаем видео-сюрприз на мобильных
   if (window.matchMedia('(pointer: coarse)').matches) {
     const catSurprise = document.getElementById('catSurprise');
     if (catSurprise) {
