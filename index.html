@@ -240,7 +240,7 @@
   </div>
   <h3>Контроль кота Сириуса</h3>
   <div class="price">121 000 ₽</div>
-  <p>(Акция 120 000 + 1 000). Личное наблюдение кота-юриста. Если что-то пойдёт не так, он укусит нас за провод.</p>
+  <p>(Акция 120 000 + 1 000). Личное наблюдение кота-юриста. Если что-то пойдёт не так, он укусит наших юристов, пока не исправятся!</p>
 </div>
       </div>
       <p style="text-align:center; margin-top:30px; font-size:0.9rem;">* В стоимость не включены судебный депозит (25 000 – 50 000 руб.) и почтовые расходы.</p>
@@ -352,6 +352,13 @@ timerSpan.textContent = `${days} дн. ${hours} ч. ${minutes} мин.`;
       const isActive = body.classList.contains('active');
       document.querySelectorAll('.accordion-body').forEach(b => b.classList.remove('active'));
       if (!isActive) body.classList.add('active');
+       // Отключаем видео-сюрприз на мобильных (оставляем только фото)
+if (window.matchMedia('(pointer: coarse)').matches) {
+  const catSurprise = document.getElementById('catSurprise');
+  if (catSurprise) {
+    catSurprise.classList.add('no-hover');
+  }
+}
     });
   });
     // Отключаем видео-сюрприз на мобильных (оставляем только фото)
