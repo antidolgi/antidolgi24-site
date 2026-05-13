@@ -93,7 +93,7 @@
 
     .promo-hero { background: linear-gradient(135deg, #0F3A28 0%, #1E5A4C 100%); color: var(--white); padding: 100px 20px 60px; margin-top: 70px; }
     .hero-flex { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 30px; }
-    .hero-image { flex: 0 0 280px; border-radius: 50%; overflow: hidden; border: 4px solid var(--gold); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    .hero-image { flex: 0 0 280px; overflow: hidden; border-radius: var(--border-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
     .hero-image img { width: 100%; display: block; }
     .hero-text { flex: 1; text-align: center; }
     .hero-text h1 { color: var(--white); font-size: clamp(2rem, 5vw, 2.8rem); margin-bottom: 15px; }
@@ -156,7 +156,7 @@
       </div>
       <div class="hero-text">
         <h1><span id="promoEndDate">до окончания этапа</span>: избавьтесь от долгов (даже если коллекторы звонят) за 120 000 ₽ — без скрытых платежей</h1>
-        <p>Законное банкротство физических лиц под ключ. Рассрочка на время процедуры. Вернём деньги, если суд откажет не по вашей вине.</p>
+<p>Законное банкротство физических лиц под ключ. Рассрочка на время процедуры. Гарантия: если по нашей вине суд не примет заявление, вернём деньги.</p>
         <div class="price-badge">120 000 ₽</div>
         <div class="timer" id="timer">До конца акции: <span>...</span></div>
         <div class="places">Осталось мест по акции: <span id="placesLeft">4</span></div>
@@ -240,7 +240,7 @@
   </div>
   <h3>Контроль кота Сириуса</h3>
   <div class="price">121 000 ₽</div>
-  <p>Личное наблюдение кота-юриста. Если что-то пойдёт не так, он укусит нас за провод.</p>
+  <p>(Акция 120 000 + 1 000). Личное наблюдение кота-юриста. Если что-то пойдёт не так, он укусит нас за провод.</p>
 </div>
       </div>
       <p style="text-align:center; margin-top:30px; font-size:0.9rem;">* В стоимость не включены судебный депозит (25 000 – 50 000 руб.) и почтовые расходы.</p>
@@ -333,11 +333,10 @@
       if (placesSpan) placesSpan.textContent = '0';
       return;
     }
-    const h = Math.floor(diff / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
-    timerSpan.textContent = `${h} ч ${m} мин ${s} сек`;
-  }
+const days = Math.floor(diff / 86400000);
+const hours = Math.floor((diff % 86400000) / 3600000);
+const minutes = Math.floor((diff % 3600000) / 60000);
+timerSpan.textContent = `${days} дн. ${hours} ч. ${minutes} мин.`;
 
   setInterval(updatePromo, 1000);
   updatePromo();
