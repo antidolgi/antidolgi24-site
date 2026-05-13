@@ -155,7 +155,7 @@
         <img src="assets/img/dad-lawyer.jpg" alt="Ведущий юрист Антидолги24">
       </div>
       <div class="hero-text">
-        <h1><span id="promoEndDate">до окончания этапа</span>: избавьтесь от долгов (даже если коллекторы звонят) за 120 000 ₽ — без скрытых платежей</h1>
+        <h1>АКЦИЯ до 18 мая: избавьтесь от долгов (даже если коллекторы звонят) за 120 000 ₽ — без скрытых платежей</h1>
 <p>Законное банкротство физических лиц под ключ. Рассрочка на время процедуры. Гарантия: если по нашей вине суд не примет заявление, вернём деньги.</p>
         <div class="price-badge">120 000 ₽</div>
         <div class="timer" id="timer">До конца акции: <span>...</span></div>
@@ -313,7 +313,6 @@
   function updatePromo() {
     const active = getActivePeriod();
     const block = document.getElementById('promoBlock');
-    const dateSpan = document.getElementById('promoEndDate');
     const timerSpan = document.querySelector('#timer span');
     const placesSpan = document.getElementById('placesLeft');
 
@@ -322,10 +321,6 @@
       return;
     }
     if (block) block.style.display = 'block';
-    
-    const end = active.end;
-    const options = { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' };
-    dateSpan.textContent = 'до ' + end.toLocaleDateString('ru-RU', options);
     
     const diff = end - new Date();
     if (diff <= 0) {
