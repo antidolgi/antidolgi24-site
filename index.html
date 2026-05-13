@@ -279,21 +279,23 @@
     </div>
   </section>
 
-  <section class="section" id="form" style="background: linear-gradient(135deg, #f5f0e9, #e8e0d5);">
-    <div class="container">
-      <div class="form-container">
-        <h2 style="text-align:center; margin-bottom:25px;">Оставьте заявку и получите консультацию</h2>
-        <form action="https://formspree.io/f/maqvoqdr" method="POST" id="promoForm">
-          <div style="position:absolute; left:-9999px;" aria-hidden="true"><input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></div>
-          <div class="form-group"><input type="text" name="name" placeholder="Ваше имя" required></div>
-          <div class="form-group"><input type="tel" name="phone" placeholder="Телефон" required></div>
-          <div class="form-group"><label class="checkbox-label"><input type="checkbox" name="privacy_agree" required> Я согласен на обработку персональных данных в соответствии с <a href="privacy.html" target="_blank">Политикой</a></label></div>
-          <button type="submit" class="btn-submit">Отправить заявку</button>
-          <p style="text-align:center; font-size:0.75rem; margin-top:15px; color:#666;">Нажимая кнопку, вы принимаете условия акции. Мы не передаём ваши данные.</p>
-        </form>
-      </div>
+<section class="section" id="form" style="background: linear-gradient(135deg, #f5f0e9, #e8e0d5);">
+  <div class="container">
+    <div class="form-container">
+      <h2 style="text-align:center; margin-bottom:25px;">Оставьте заявку и получите консультацию</h2>
+      <!-- Яндекс.Форма -->
+      <script src="https://forms.yandex.ru/_static/embed.js"></script>
+      <iframe src="https://forms.yandex.ru/u/6a045a17eb6146224ad78c74?iframe=1" 
+              frameborder="0" 
+              name="ya-form-6a045a17eb6146224ad78c74" 
+              width="100%" 
+              height="500" 
+              style="border: none; max-width: 100%;">
+      </iframe>
+      <!-- конец Яндекс.Формы -->
     </div>
-  </section>
+  </div>
+</section>
 
   <div class="legal-note container">
     ⚠️ Банкротство влечет негативные последствия: ограничение на получение кредитов, запрет на повторное банкротство в течение 5 лет. Услуги оказываются в рамках ФЗ «О несостоятельности (банкротстве)». Акция действует ограниченное время только для физлиц с долгом до 1,5 млн руб. без залогового имущества. Точные даты и условия уточняйте по телефону. Судебный депозит и почтовые расходы оплачиваются отдельно. Организатор: ООО «Агенство ППАУ». Информация на сайте не является публичной офертой.
@@ -349,46 +351,6 @@
 
   setInterval(updatePromo, 1000);
   updatePromo();
-
-  // Форма с асинхронной отправкой
-  document.getElementById('promoForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // останавливаем стандартную отправку
-
-    const form = e.target;
-    const submitBtn = form.querySelector('.btn-submit');
-    const originalText = submitBtn.textContent;
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Отправка...';
-
-    const formData = new FormData(form);
-
-    fetch(form.action, {
-      method: 'POST',
-      body: formData,
-      headers: { 'Accept': 'application/json' }
-    })
-    .then(response => {
-      if (response.ok) {
-        // Успех: уменьшаем счётчик мест и перенаправляем
-        const placesSpan = document.getElementById('placesLeft');
-        let places = parseInt(placesSpan.textContent);
-        if (places > 1) places--;
-        placesSpan.textContent = places;
-
-        window.location.href = 'thanks.html';
-      } else {
-        alert('Ошибка при отправке. Позвоните нам: 8 995 788-66-68');
-      }
-    })
-    .catch(error => {
-      console.error(error);
-      alert('Ошибка сети. Позвоните нам: 8 995 788-66-68');
-    })
-    .finally(() => {
-      submitBtn.disabled = false;
-      submitBtn.textContent = originalText;
-    });
-  });
 
   // Аккордеон FAQ
   document.querySelectorAll('.accordion-header').forEach(btn => {
