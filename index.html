@@ -92,9 +92,21 @@
     .btn-outline { background: transparent; border: 2px solid var(--gold); color: var(--white); margin-left: 10px; } .btn-outline:hover { background: rgba(203,164,104,0.1); }
 
     .promo-hero { background: linear-gradient(135deg, #0F3A28 0%, #1E5A4C 100%); color: var(--white); padding: 100px 20px 60px; margin-top: 70px; }
-    .hero-flex { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 30px; }
-    .hero-image { flex: 0 0 280px; overflow: hidden; border-radius: var(--border-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-    .hero-image img { width: 100%; display: block; }
+    .hero-flex { display: flex; align-items: stretch; justify-content: center; flex-wrap: wrap; gap: 30px; }
+    .hero-image {
+  flex: 1 1 auto;
+  max-width: 350px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  overflow: hidden;
+  display: flex;
+}
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
     .hero-text { flex: 1; text-align: center; }
     .hero-text h1 { color: var(--white); font-size: clamp(2rem, 5vw, 2.8rem); margin-bottom: 15px; }
     .hero-text p { font-size: 1.2rem; margin-bottom: 25px; font-weight: 300; }
@@ -155,7 +167,7 @@
         <img src="assets/img/dad-lawyer.jpg" alt="Ведущий юрист Антидолги24">
       </div>
       <div class="hero-text">
-        <h1>АКЦИЯ до 18 мая: избавьтесь от долгов (коллекторы могут перестать звонить СЕГОДНЯ) за 120 000 ₽ — без скрытых платежей</h1>
+        <h1>АКЦИЯ до 18 мая: избавьтесь от долгов (коллекторы перестанут звонить уже СЕГОДНЯ) за 120 000 ₽ — без скрытых платежей</h1>
 <p>Законное банкротство физических лиц под ключ. Рассрочка на время процедуры. Гарантия: если по нашей вине суд не примет заявление, вернём деньги.</p>
         <div class="price-badge">120 000 ₽</div>
         <div class="timer" id="timer">До конца акции: <span>...</span></div>
@@ -295,7 +307,6 @@
     </div>
   </footer>
 
-  <script>
   <script>
   const periods = [
     { start: new Date(2026, 4, 13, 12, 30, 0), end: new Date(2026, 4, 18, 12, 30, 0) },
