@@ -310,65 +310,103 @@
   </footer>
 
 <script>
-  const periods = [
-    { start: new Date(2026, 4, 13, 12, 30, 0), end: new Date(2026, 4, 18, 12, 30, 0) },
-    { start: new Date(2026, 4, 21, 7, 0, 0),  end: new Date(2026, 4, 26, 7, 0, 0) },
-    { start: new Date(2026, 4, 30, 7, 0, 0),  end: new Date(2026, 5, 10, 7, 0, 0) } // 30 мая – 10 июня
-  ];
+  (function() {
+    // ===== НАСТРОЙКИ АКЦИИ =====
+    const periods = [
+      { start: new Date(2026, 4, 13, 12, 30, 0), end: new Date(2026, 4, 18, 12, 30, 0) },
+      { start: new Date(2026, 4, 21, 7, 0, 0),  end: new Date(2026, 4, 26, 7, 0, 0) },
+      { start: new Date(2026, 4, 30, 7, 0, 0),  end: new Date(2026, 5, 10, 7, 0, 0) } // 30 мая – 10 июня
+    ];
 
-  function getActivePeriod() {
-    const now = new Date();
-    for (let p of periods) {
-      if (now >= p.start && now <= p.end) return p;
+    function getActivePeriod() {
+      const now = new Date();
+      for (let p of periods) {
+        if (now >= p.start && now <= p.end) return p;
+      }
+      return null;
     }
-    return null;
-  }
 
-  function updatePromo() {
-    const active = getActivePeriod();
-    const block = document.getElementById('promoBlock');
-    const timerSpan = document.querySelector('#timer span');
-    const placesSpan = document.getElementById('placesLeft');
+    function updatePromo() {
+      const active = getActivePeriod();
+      const block = document.getElementById('promoBlock');
+      const timerSpan = document.querySelector('#timer span');
+      const placesSpan = document.getElementById('placesLeft');
 
-    if (!active) {
-      if (block) block.style.display = 'none';
-      return;
+      if (!active) {
+        if (block) block.style.display = 'none';
+        return;
+      }
+      if (block) block.style.display = 'block';
+
+      const end = active.end;
+      const diff = end - new Date();
+      if (diff <= 0) {
+        timerSpan.textContent = 'Акция завершена';
+        if (placesSpan) placesSpan.textContent = '0';
+        return;
+      }
+      const days = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      const minutes = Math.floor((diff % 3600000) / 60000);
+      timerSpan.textContent = `${days} дн. ${hours} ч. ${minutes} мин.`;
     }
-    if (block) block.style.display = 'block';
 
-    const end = active.end;
-    const diff = end - new Date();
-    if (diff <= 0) {
-      timerSpan.textContent = 'Акция завершена';
-      if (placesSpan) placesSpan.textContent = '0';
-      return;
-    }
-    const days = Math.floor(diff / 86400000);
-    const hours = Math.floor((diff % 86400000) / 3600000);
-    const minutes = Math.floor((diff % 3600000) / 60000);
-    timerSpan.textContent = `${days} дн. ${hours} ч. ${minutes} мин.`;
-  }
+    setInterval(updatePromo, 1000);
+    updatePromo();
 
-  setInterval(updatePromo, 1000);
-  updatePromo();
+    // ===== ОБРАБОТЧИК ЯНДЕКС.ФОРМЫ =====
+    window.addEventListener('message', function(event) {
+      // Проверяем, что сообщение от Яндекс.Форм
+      if (event.origin !== 'https://forms.yandex.ru') return;
 
-  // Аккордеон FAQ
-  document.querySelectorAll('.accordion-header').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const body = btn.nextElementSibling;
-      const isActive = body.classList.contains('active');
-      document.querySelectorAll('.accordion-body').forEach(b => b.classList.remove('active'));
-      if (!isActive) body.classList.add('active');
+      try {
+        const data = JSON.parse(event.data);
+        // Если форма успешно отправлена
+        if (data.type === 'form-submit-success' && data.formId === '6a045a17eb6146224ad78c74') {
+          // Уменьшаем счётчик мест
+          const placesSpan = document.getElementById('placesLeft');
+          if (placesSpan) {
+            let places = parseInt(placesSpan.textContent);
+            if (places > 1) places--;
+            placesSpan.textContent = places;
+          }
+
+          // Заменяем форму благодарностью
+          const formContainer = document.querySelector('.form-container');
+          if (formContainer) {
+            formContainer.innerHTML = `
+              <div style="text-align:center; padding:20px 0;">
+                <h2 style="color:#0F3A28; margin-bottom:15px;">Спасибо за заявку!</h2>
+                <p style="font-size:1.1rem; margin-bottom:15px;">Мы свяжемся с вами в ближайшее время.</p>
+                <p style="font-size:1rem; margin-bottom:15px;">Если вопрос срочный, звоните:<br><a href="tel:89957886668" style="color:#CBA468; font-weight:700; font-size:1.3rem;">8 995 788-66-68</a></p>
+                <a href="/" class="btn" style="display:inline-block; margin-top:10px; background:#CBA468; color:#0F3A28; padding:12px 30px; border-radius:6px; text-decoration:none; font-weight:700;">Вернуться на главную</a>
+              </div>
+            `;
+          }
+        }
+      } catch(e) {
+        // не JSON сообщение, игнорируем
+      }
     });
-  });
 
-  // Отключаем видео-сюрприз на мобильных
-  if (window.matchMedia('(pointer: coarse)').matches) {
-    const catSurprise = document.getElementById('catSurprise');
-    if (catSurprise) {
-      catSurprise.classList.add('no-hover');
+    // ===== FAQ АККОРДЕОН =====
+    document.querySelectorAll('.accordion-header').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const body = btn.nextElementSibling;
+        const isActive = body.classList.contains('active');
+        document.querySelectorAll('.accordion-body').forEach(b => b.classList.remove('active'));
+        if (!isActive) body.classList.add('active');
+      });
+    });
+
+    // ===== ОТКЛЮЧЕНИЕ ВИДЕО-СЮРПРИЗА НА МОБИЛЬНЫХ =====
+    if (window.matchMedia('(pointer: coarse)').matches) {
+      const catSurprise = document.getElementById('catSurprise');
+      if (catSurprise) {
+        catSurprise.classList.add('no-hover');
+      }
     }
-  }
+  })();
 </script>
 </body>
 </html>
